@@ -22,8 +22,12 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Silhouette_Build_Notifier.py" />
+    <Compile Include="watcher.py">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="requirements.txt" />
     <Content Include="silhouette_logo.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
