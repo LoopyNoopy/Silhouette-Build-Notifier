@@ -11,7 +11,7 @@ networkx==2.1
 numpy==1.14.0
 opencv-python==3.4.0.12
 pefile==2017.11.5
-Pillow==5.0.0
+Pillow==6.2.0
 pip==19.0.3
 psutil==5.4.3
 PyAutoGUI==0.9.45
