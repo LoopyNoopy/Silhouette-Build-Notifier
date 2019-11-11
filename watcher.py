@@ -1,11 +1,10 @@
 import os,time, datetime
 from win10toast import ToastNotifier
-from threading import Thread
+import multiprocessing
 
 def watcherThreadFunct(branches):
-    watcherThread = Thread(target = watcher(branches))
+    watcherThread =  multiprocessing.Process(target = watcher(branches))
     watcherThread.start()
-    watcherThread.join()
     return()
 
 def watcher(branches):
@@ -37,4 +36,14 @@ def watcher(branches):
 
 def notifier(branch, file):
     toaster.show_toast("Silhouette New Build detecter","{0} is now avaliable in {1}".format(branch,file), icon_path="silhouette_logo.ico", threaded=True)
+    return()
+
+def watcherV2():
+    #Checks to see if the watchlist has been created
+    while True:
+        if os.path.exists("watchlist.txt") == False:
+            time.sleep(10)
+            file = open("watchlist.txt", "w+")
+            file.write("Slept for 10" + "\n")
+            print("Slept")
     return()

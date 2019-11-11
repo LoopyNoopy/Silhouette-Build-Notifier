@@ -1,11 +1,11 @@
 from functools import partial
 import os, time, datetime, tkinter
-import multiprocessing
-import watcher
 
 mydate = datetime.datetime.now()
 
+#Function to get the branches of the current month
 def getMonthBranches():
+    mydate = datetime.datetime.now()
     if os.path.exists("Z://{0}//{1}".format(mydate.year,mydate.strftime("%B"))) == True:
         branches = os.listdir("Z://{0}//{1}".format(mydate.year,mydate.strftime("%B")))
     else:
@@ -16,12 +16,6 @@ def getMonthBranches():
         if folder[0] == ".":
             branches.remove(folder)
     return(branches)
-
-def createBranchChkBox(folders):
-    checkVar = []
-    for folder in folders:
-        folder = tkinter.Checkbutton(app, text = folder, onvalue = 1, offvalue = 0, height=5, width = 20)
-    return()
 
 class App():
     def __init__(self):
@@ -68,10 +62,3 @@ class App():
     def quit(self):
         self.root.iconify()
         return()
-
-getMonthBranches()
-
-def startApp():
-    getMonthBranches()
-    app = App()
-    return()

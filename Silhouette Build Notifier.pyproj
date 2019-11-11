@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>ae8a57e4-4bda-4456-8355-6cd949e5ab89</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>Silhouette_Build_Notifier.py</StartupFile>
+    <StartupFile>Build_Notifier.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -21,7 +21,13 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Build_Notifier.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Silhouette_Build_Notifier.py" />
+    <Compile Include="UI.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="watcher.py">
       <SubType>Code</SubType>
     </Compile>
