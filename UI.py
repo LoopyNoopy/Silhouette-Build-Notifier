@@ -1,4 +1,5 @@
 from functools import partial
+from tkinter import filedialog
 import os, time, datetime, tkinter
 
 mydate = datetime.datetime.now()
@@ -6,12 +7,12 @@ mydate = datetime.datetime.now()
 #Function to get the branches of the current month
 def getMonthBranches():
     mydate = datetime.datetime.now()
-    if os.path.exists("Z://{0}//{1}".format(mydate.year,mydate.strftime("%B"))) == True:
-        branches = os.listdir("Z://{0}//{1}".format(mydate.year,mydate.strftime("%B")))
+    if os.path.exists("//srtserver-01/build_folder//{0}//{1}".format(mydate.year,mydate.strftime("%B"))) == True:
+        branches = os.listdir("//srtserver-01/build_folder//{0}//{1}".format(mydate.year,mydate.strftime("%B")))
     else:
         first = mydate.replace(day=1)
         lastMonth = first - datetime.timedelta(days=1)
-        branches = os.listdir("Z://{0}//{1}".format(lastMonth.year,lastMonth.strftime("%B")))
+        branches = os.listdir("//srtserver-01/build_folder//{0}//{1}".format(lastMonth.year,lastMonth.strftime("%B")))
     for folder in branches:
         if folder[0] == ".":
             branches.remove(folder)
@@ -24,7 +25,10 @@ class App():
         self.root.configure(background = "white")
         self.root.title("Silhouette Build Notifier")
         self.root.wm_iconbitmap('silhouette_logo.ico')
-
+        self.root.resizable(0,0)
+        folder_path = tkinter.StringVar()
+        if os.path.exists("filepath.txt") == False:
+            folder_path.set("//srtserver-01/build_folder")
         branches = getMonthBranches()
         for folder in branches:
             if folder[0] == ".":
@@ -32,10 +36,14 @@ class App():
 
         lTitle = tkinter.Label(self.root, text = "Silhouette R&T Build Notifier", background ="white", font=("Segoe UI", 14))
         ldate = tkinter.Label(self.root, text = "{0} - {1}".format(mydate.strftime("%B"), mydate.year), background ="white", font=("Segoe UI", 12))
+        lServerPath = tkinter.Label(self.root, textvariable=folder_path, background ="white", font=("Segoe UI", 10))
+        bSelectServer = tkinter.Button(self.root, text="Select Server", background = "#4FB2CE", foreground = "white", activebackground = "#339AB7", activeforeground = "white", highlightthickness = 0, bd = 0, command=partial(self.browse_button, folder_path), font=("Segoe UI", 12))
         bQuit = tkinter.Button(self.root, text = 'Minimise', background = "#4FB2CE", foreground = "white", activebackground = "#339AB7", activeforeground = "white", highlightthickness = 0, bd = 0, command=self.quit, font=("Segoe UI", 12))
        
         lTitle.grid(pady = 5, padx = 10, columnspan = 3)
         ldate.grid(columnspan = 3, pady = (0,15))
+        bSelectServer.grid(row = 3, column = 0, padx = 10)
+        lServerPath.grid(row=3, column = 1, columnspan = 2, padx = (0,10))
 
         for count, branch in enumerate(branches):
             branchesVar.append(tkinter.IntVar())
@@ -46,9 +54,9 @@ class App():
                         if lineStripped == branch:
                             branchesVar[count].set(1)
             l = tkinter.Checkbutton(self.root, text=branch, command = partial(self.printSelf,branchesVar, branches), variable=branchesVar[count], background = "white", font=("Segoe UI", 10))
-            l.grid(pady = 1, padx = 10, column = 1, columnspan = 2, row = count+3, sticky = "W")
+            l.grid(pady = 1, padx = 10, column = 1, columnspan = 2, row = count+4, sticky = "W")
             counter = count
-        bQuit.grid(pady = 10, padx = 10, sticky="SE", row = counter + 4, column = 2)
+        bQuit.grid(pady = 10, padx = 10, sticky="SE", row = counter + 5, column = 2)
         self.root.mainloop()
 
     def printSelf(self, branchesVar, branches):
@@ -61,4 +69,12 @@ class App():
 
     def quit(self):
         self.root.iconify()
+        return()
+
+    def browse_button(self, folder_path):
+        filename = filedialog.askdirectory()
+        folder_path.set(filename)
+        file = open("folderpath.txt", "w+")
+        file.write(filename + "\n")
+        file.close()
         return()

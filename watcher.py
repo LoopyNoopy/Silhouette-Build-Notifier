@@ -38,12 +38,53 @@ def notifier(branch, file):
     toaster.show_toast("Silhouette New Build detecter","{0} is now avaliable in {1}".format(branch,file), icon_path="silhouette_logo.ico", threaded=True)
     return()
 
+mydate = datetime.datetime.now()
 def watcherV2():
-    #Checks to see if the watchlist has been created
+    toaster = ToastNotifier()
+    print("Starting watcher")
+    #Checks to see if the watchlist has been created, if not it waits 10 seconds before checking again
     while True:
-        if os.path.exists("watchlist.txt") == False:
+        if not os.path.exists("watchlist.txt"):
             time.sleep(10)
-            file = open("watchlist.txt", "w+")
-            file.write("Slept for 10" + "\n")
-            print("Slept")
+        else:
+            #Once it finds the watchlist file, create a list of all file contents in the branch folders inside it (PC Only)
+            with open("watchlist.txt", "r") as watchlist:
+                for line in watchlist:
+                    line = line.rstrip("\n")
+                    branchSet1 = open("{}.txt".format(line), "w+")
+                    branchContents = os.listdir("//srtserver-01/build_folder//{0}//{1}//{2}//WIN".format(mydate.year,mydate.strftime("%B"),line))
+                    for file in branchContents:
+                        branchSet1.write(file + "\n")
+                    branchSet1.close()
+            #Wait 5 minutes before checking
+            #time.sleep(300)
+            with open("watchlist.txt", "r") as watchlist:
+                #Goes through each line for the branch number
+                for line in watchlist:
+                    #Clears the sets for each branch
+                    set1 = []
+                    set2 = []
+                    line = line.rstrip("\n")
+                    #Opens the initally created list of the branch and adds it to a list
+                    branchFile = open("{}.txt".format(line), "r")
+                    for file in branchFile:
+                        set1.append(file)
+                    #Lists the directory at present time and converts it to a list
+                    branchSet2 = os.listdir("//srtserver-01/build_folder//{0}//{1}//{2}//WIN".format(mydate.year,mydate.strftime("%B"),line))
+                    for file in branchSet2:
+                        set2.append(file)
+
+                    #Checks the new list to the old list to see if it's a new item
+                    for item in set2:
+                        isNew = True
+                        for oldItem in set1:
+                            oldItem = oldItem.rstrip("\n")
+                            if item == oldItem:
+                                isNew = False
+                        #If gone through the loop and hasn't been set to false, must be new so notify
+                        if isNew ==True:
+                            toaster.show_toast("Silhouette Build Detection","{0} is now avaliable in {1}".format(item,line), icon_path="silhouette_logo.ico", threaded=True)
+
     return()
+
+watcherV2()
