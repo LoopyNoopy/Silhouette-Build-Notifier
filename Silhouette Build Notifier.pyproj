@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>ae8a57e4-4bda-4456-8355-6cd949e5ab89</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>watcher.py</StartupFile>
+    <StartupFile>Build_Notifier.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>

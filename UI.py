@@ -1,6 +1,6 @@
 from functools import partial
 from tkinter import filedialog
-import os, time, datetime, tkinter
+import os, time, datetime, tkinter, watcher
 
 mydate = datetime.datetime.now()
 
@@ -45,6 +45,7 @@ class App():
         bSelectServer.grid(row = 3, column = 0, padx = 10)
         lServerPath.grid(row=3, column = 1, columnspan = 2, padx = (0,10))
 
+        #Will check to see if the branches are in the watchlist.txt file and set the checkbox to "active" when launching the UI
         for count, branch in enumerate(branches):
             branchesVar.append(tkinter.IntVar())
             if os.path.exists("watchlist.txt") == True:
@@ -59,18 +60,22 @@ class App():
         bQuit.grid(pady = 10, padx = 10, sticky="SE", row = counter + 5, column = 2)
         self.root.mainloop()
 
+    #Adds / removes the branch from the watchlist.txt file
     def printSelf(self, branchesVar, branches):
         file = open("watchlist.txt", "w+")
         for count,i in enumerate(branchesVar):
             if branchesVar[count].get() == 1:
                 file.write(branches[count] + "\n")
         file.close
+        watcher.branchFileUpdater(branches, branchesVar)
         return()
 
+    #Minimises the UI Window
     def quit(self):
         self.root.iconify()
         return()
 
+    #Allows the user to select the file path to the build folder
     def browse_button(self, folder_path):
         filename = filedialog.askdirectory()
         folder_path.set(filename)

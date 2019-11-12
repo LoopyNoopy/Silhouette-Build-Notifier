@@ -1,6 +1,5 @@
-import os,time, datetime
+import os,time, datetime, multiprocessing, tkinter
 from win10toast import ToastNotifier
-import multiprocessing
 
 def watcherThreadFunct(branches):
     watcherThread =  multiprocessing.Process(target = watcher(branches))
@@ -57,7 +56,7 @@ def watcherV2():
                         branchSet1.write(file + "\n")
                     branchSet1.close()
             #Wait 5 minutes before checking
-            #time.sleep(300)
+            time.sleep(300)
             with open("watchlist.txt", "r") as watchlist:
                 #Goes through each line for the branch number
                 for line in watchlist:
@@ -87,4 +86,14 @@ def watcherV2():
 
     return()
 
-watcherV2()
+def branchFileUpdater(branch, branchVar):
+    for count, item in enumerate(branch):
+        if branchVar[count].get() == 1:
+            if os.path.exists("{}.txt".format(branch[count])) !=True:
+                with open("{}.txt".format(branch[count]), "w+") as branchFile:
+                    branchFiles = os.listdir("//srtserver-01/build_folder//{0}//{1}//{2}//WIN".format(mydate.year,mydate.strftime("%B"),branch[count]))
+                    for file in branchFiles:
+                        branchFile.write(file + "\n")
+        elif os.path.exists("{}.txt".format(branch[count])) == True and branchVar[count].get() == 0:
+            os.remove("{}.txt".format(branch[count]))
+    return()
