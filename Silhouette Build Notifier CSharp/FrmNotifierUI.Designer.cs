@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmNotifierUI));
             this.lblTitle = new System.Windows.Forms.Label();
             this.lblDate = new System.Windows.Forms.Label();
+            this.lblFolderPath = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblTitle
@@ -51,8 +52,19 @@
             this.lblDate.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDate.Location = new System.Drawing.Point(59, 25);
             this.lblDate.Name = "lblDate";
-            this.lblDate.Size = new System.Drawing.Size(0, 21);
+            this.lblDate.Size = new System.Drawing.Size(59, 21);
             this.lblDate.TabIndex = 1;
+            this.lblDate.Text = "lblDate";
+            // 
+            // lblFolderPath
+            // 
+            this.lblFolderPath.AutoSize = true;
+            this.lblFolderPath.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFolderPath.Location = new System.Drawing.Point(113, 46);
+            this.lblFolderPath.Name = "lblFolderPath";
+            this.lblFolderPath.Size = new System.Drawing.Size(101, 21);
+            this.lblFolderPath.TabIndex = 2;
+            this.lblFolderPath.Text = "lblFolderPath";
             // 
             // FrmNotifierUI
             // 
@@ -63,6 +75,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.lblFolderPath);
             this.Controls.Add(this.lblDate);
             this.Controls.Add(this.lblTitle);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -78,6 +91,7 @@
 
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.Label lblDate;
+        private System.Windows.Forms.Label lblFolderPath;
     }
 }
 

@@ -5934,4 +5934,8 @@
         hTiOu3UFKeVfvO1tb/vVn/yJ/xhfOIE454RzTr/Y6bXPt/j/AxJQx2VPZzYqAAAAAElFTkSuQmCC
 </value>
   </data>
+  <data name="folderPath" xml:space="preserve">
+    <value />
+    <comment>Variable to hold the folder path to the server</comment>
+  </data>
 </root>
