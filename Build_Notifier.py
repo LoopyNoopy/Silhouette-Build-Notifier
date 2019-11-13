@@ -7,6 +7,3 @@ if __name__ == "__main__":
     while True:
         watcherProcess.start()
         watcherProcess.join()
-  
-    # both processes finished 
-    print("Done!") 

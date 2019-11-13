@@ -6,23 +6,27 @@ mydate = datetime.datetime.now()
 
 #Function to get the branches of the current month
 def getMonthBranches():
-    mydate = datetime.datetime.now()
-    if os.path.exists("//srtserver-01/build_folder//{0}//{1}".format(mydate.year,mydate.strftime("%B"))) == True:
-        branches = os.listdir("//srtserver-01/build_folder//{0}//{1}".format(mydate.year,mydate.strftime("%B")))
-    else:
-        #If it cannot find the current month try the last month
-        first = mydate.replace(day=1)
-        lastMonth = first - datetime.timedelta(days=1)
-        branches = os.listdir("//srtserver-01/build_folder//{0}//{1}".format(lastMonth.year,lastMonth.strftime("%B")))
-    #Removes ".dsstore" from the list
-    for folder in branches:
-        if folder[0] == ".":
-            branches.remove(folder)
+    if os.path.exists("folderpath.txt") == True:
+        with open("folderpath.txt", "r") as filePathFile:
+            filepath = filePathFile.readline()
+        mydate = datetime.datetime.now()
+        if os.path.exists("//srtserver-01/build_folder//{0}//{1}".format(mydate.year,mydate.strftime("%B"))) == True:
+            branches = os.listdir("//srtserver-01/build_folder//{0}//{1}".format(mydate.year,mydate.strftime("%B")))
+        else:
+            #If it cannot find the current month try the last month
+            first = mydate.replace(day=1)
+            lastMonth = first - datetime.timedelta(days=1)
+            branches = os.listdir("//srtserver-01/build_folder//{0}//{1}".format(lastMonth.year,lastMonth.strftime("%B")))
+        #Removes ".dsstore" from the list
+        for folder in branches:
+            if folder[0] == ".":
+                branches.remove(folder)
     return(branches)
 
 class App():
     def __init__(self):
         branchesVar = []
+        branchesStr = []
         self.root = tkinter.Tk()
         self.root.configure(background = "white")
         self.root.title("Silhouette Build Notifier")
@@ -85,3 +89,15 @@ class App():
         file.write(filename + "\n")
         file.close()
         return()
+
+    def makeLabel(self):
+        lTitle = tkinter.Label(self.root, text = "THIS IS FROM A FUNCTION", background ="white", font=("Segoe UI", 14))
+        lTitle.grid(pady = 5, padx = 10, columnspan = 3)
+        return()
+
+    #def createCheckboxes(self, branches):
+    #    branchesVar = []
+    #    branchesStr = []
+    #    for count, branch in enumerate(branches):
+
+    #    return()

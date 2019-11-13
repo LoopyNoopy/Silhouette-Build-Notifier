@@ -11,7 +11,7 @@ networkx==2.1
 numpy==1.14.0
 opencv-python==3.4.0.12
 pefile==2017.11.5
-Pillow==6.2.0
+Pillow==6.2.1
 pip==19.0.3
 psutil==5.4.3
 PyAutoGUI==0.9.45
@@ -34,6 +34,7 @@ toolz==0.9.0
 tqdm==4.32.2
 wheel==0.30.0
 win10toast==0.9
+win10toast-persist==0.10.1
 win32core==221.36
 win32gui==221.6
 WMI==1.4.9

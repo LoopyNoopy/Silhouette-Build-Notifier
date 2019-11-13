@@ -1,5 +1,5 @@
 import os,time, datetime, multiprocessing, tkinter
-from win10toast import ToastNotifier
+from win10toast_persist import ToastNotifier
 
 mydate = datetime.datetime.now()
 def watcherV2():
@@ -19,7 +19,8 @@ def watcherV2():
                         branchSet1.write(file + "\n")
                     branchSet1.close()
             #Wait 5 minutes before checking
-            time.sleep(300)
+            print("15")
+            time.sleep(15)
             with open("watchlist.txt", "r") as watchlist:
                 #Goes through each line for the branch number
                 for line in watchlist:
@@ -45,7 +46,7 @@ def watcherV2():
                                 isNew = False
                         #If gone through the loop and hasn't been set to false, must be new so notify
                         if isNew ==True:
-                            toaster.show_toast("Silhouette Build Detection","{0} is now avaliable in {1}".format(item,line), icon_path="silhouette_logo.ico", threaded=True)
+                            toaster.show_toast("Silhouette Build Detection","{0} is now avaliable in {1}".format(item,line), icon_path="silhouette_logo.ico", threaded=True, duration = None)
 
     return()
 

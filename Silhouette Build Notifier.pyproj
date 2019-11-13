@@ -24,7 +24,6 @@
     <Compile Include="Build_Notifier.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Silhouette_Build_Notifier.py" />
     <Compile Include="UI.py">
       <SubType>Code</SubType>
     </Compile>
