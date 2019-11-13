@@ -10,9 +10,11 @@ def getMonthBranches():
     if os.path.exists("//srtserver-01/build_folder//{0}//{1}".format(mydate.year,mydate.strftime("%B"))) == True:
         branches = os.listdir("//srtserver-01/build_folder//{0}//{1}".format(mydate.year,mydate.strftime("%B")))
     else:
+        #If it cannot find the current month try the last month
         first = mydate.replace(day=1)
         lastMonth = first - datetime.timedelta(days=1)
         branches = os.listdir("//srtserver-01/build_folder//{0}//{1}".format(lastMonth.year,lastMonth.strftime("%B")))
+    #Removes ".dsstore" from the list
     for folder in branches:
         if folder[0] == ".":
             branches.remove(folder)
