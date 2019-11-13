@@ -1,0 +1,9 @@
+C:\Users\dburgess\Documents\GitHub\Silhouette Build Notifier\Silhouette Build Notifier CSharp\bin\Debug\Silhouette Build Notifier CSharp.exe.config
+C:\Users\dburgess\Documents\GitHub\Silhouette Build Notifier\Silhouette Build Notifier CSharp\bin\Debug\Silhouette Build Notifier CSharp.exe
+C:\Users\dburgess\Documents\GitHub\Silhouette Build Notifier\Silhouette Build Notifier CSharp\bin\Debug\Silhouette Build Notifier CSharp.pdb
+C:\Users\dburgess\Documents\GitHub\Silhouette Build Notifier\Silhouette Build Notifier CSharp\obj\Debug\Silhouette Build Notifier CSharp.csprojAssemblyReference.cache
+C:\Users\dburgess\Documents\GitHub\Silhouette Build Notifier\Silhouette Build Notifier CSharp\obj\Debug\Silhouette_Build_Notifier_CSharp.FrmNotifierUI.resources
+C:\Users\dburgess\Documents\GitHub\Silhouette Build Notifier\Silhouette Build Notifier CSharp\obj\Debug\Silhouette_Build_Notifier_CSharp.Properties.Resources.resources
+C:\Users\dburgess\Documents\GitHub\Silhouette Build Notifier\Silhouette Build Notifier CSharp\obj\Debug\Silhouette Build Notifier CSharp.csproj.GenerateResource.cache
+C:\Users\dburgess\Documents\GitHub\Silhouette Build Notifier\Silhouette Build Notifier CSharp\obj\Debug\Silhouette Build Notifier CSharp.exe
+C:\Users\dburgess\Documents\GitHub\Silhouette Build Notifier\Silhouette Build Notifier CSharp\obj\Debug\Silhouette Build Notifier CSharp.pdb
