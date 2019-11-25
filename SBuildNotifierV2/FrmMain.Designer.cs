@@ -107,11 +107,13 @@
             // 
             // chkLBoxBranches
             // 
+            this.chkLBoxBranches.CheckOnClick = true;
             this.chkLBoxBranches.FormattingEnabled = true;
             this.chkLBoxBranches.Location = new System.Drawing.Point(12, 93);
             this.chkLBoxBranches.Name = "chkLBoxBranches";
             this.chkLBoxBranches.Size = new System.Drawing.Size(176, 94);
             this.chkLBoxBranches.TabIndex = 4;
+            this.chkLBoxBranches.SelectedIndexChanged += new System.EventHandler(this.chkLBoxBranches_SelectedIndexChanged);
             // 
             // FrmMain
             // 
