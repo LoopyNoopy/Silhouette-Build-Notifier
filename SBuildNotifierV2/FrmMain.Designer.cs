@@ -43,7 +43,7 @@
             this.lblTitle.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitle.Location = new System.Drawing.Point(12, 9);
+            this.lblTitle.Location = new System.Drawing.Point(65, 9);
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(98, 25);
             this.lblTitle.TabIndex = 0;
@@ -55,7 +55,7 @@
             this.lblSeverPath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblSeverPath.AutoSize = true;
             this.lblSeverPath.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSeverPath.Location = new System.Drawing.Point(125, 41);
+            this.lblSeverPath.Location = new System.Drawing.Point(232, 41);
             this.lblSeverPath.Name = "lblSeverPath";
             this.lblSeverPath.Size = new System.Drawing.Size(121, 21);
             this.lblSeverPath.TabIndex = 1;
@@ -119,7 +119,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(250, 450);
+            this.ClientSize = new System.Drawing.Size(357, 450);
             this.Controls.Add(this.chkLBoxBranches);
             this.Controls.Add(this.lblDate);
             this.Controls.Add(this.lblSeverPath);

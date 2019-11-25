@@ -11,6 +11,7 @@ using System.Reflection;
 using System.Resources;
 using System.Globalization;
 using System.IO;
+using System.Configuration;
 
 namespace SBuildNotifierV2
 {
@@ -21,21 +22,39 @@ namespace SBuildNotifierV2
             InitializeComponent();
         }
 
+        private void updateBranchList()
+        {
+            //This grabs the branches, lists them then adds the branch names to the string collection which the check boxes pull from
+            if(Directory.Exists(@Properties.Settings.Default.serverPath + "\\" + DateTime.Now.Year.ToString() + "\\" + DateTime.Now.ToString("MMMM")))
+            {
+                string[] dirs = Directory.GetDirectories(@Properties.Settings.Default.serverPath + "\\" + DateTime.Now.Year.ToString() + "\\" + DateTime.Now.ToString("MMMM"), "b*", SearchOption.TopDirectoryOnly);
+                var branchNamesList = new List<string>();
+                foreach (string branch in dirs)
+                {
+                    branchNamesList.Add(branch.Substring(branch.LastIndexOf('\\') + 1));
+                    Properties.Settings.Default.branchNames.Add(branch.Substring(branch.LastIndexOf('\\') + 1));
+                }
+                string[] branchNamesString = branchNamesList.ToArray();
+                chkLBoxBranches.Items.Clear();
+                chkLBoxBranches.Items.AddRange(branchNamesString);
+            }
+            else
+            {
+                lblSeverPath.Text = ("Bad location");
+                chkLBoxBranches.Items.Clear();
+            }
+            Properties.Settings.Default.Save();
+            lblTitle.Text = Properties.Settings.Default.branchNames.Cast<string>().ToString();
+            chkLBoxBranches.Height = chkLBoxBranches.Items.Count * (chkLBoxBranches.ItemHeight + 2);
+        }
+
         private void FrmMain_Load(object sender, EventArgs e)
         {
             //Settings text to what they should be
             lblTitle.Text = Properties.Resources.ResourceManager.GetString("frmTitle");
             lblSeverPath.Text = Properties.Settings.Default.serverPath;
             lblDate.Text = DateTime.Now.ToString("MMMM") + " - " + DateTime.Now.Year.ToString();
-            //This grabs the branches, lists them then adds the branch names only to the check boxes
-            string[] dirs = Directory.GetDirectories(@Properties.Settings.Default.serverPath + "\\" + DateTime.Now.Year.ToString() + "\\" + DateTime.Now.ToString("MMMM"), "b*", SearchOption.TopDirectoryOnly);
-            var branchNamesList = new List<string>();
-            foreach (string branch in dirs)
-            {
-                branchNamesList.Add(branch.Substring(branch.LastIndexOf('\\') + 1));
-            }
-            string[] branchNamesString = branchNamesList.ToArray();
-            chkLBoxBranches.Items.AddRange(branchNamesString);
+            updateBranchList();
         }
 
         private void btnServerLocation_Click(object sender, EventArgs e)
@@ -45,8 +64,8 @@ namespace SBuildNotifierV2
             if (result == DialogResult.OK) // Test result.
             {
                 Properties.Settings.Default.serverPath = folderDialogServerPath.SelectedPath;
-                Properties.Settings.Default.Save();
                 lblSeverPath.Text = Properties.Settings.Default.serverPath;
+                updateBranchList();
             }
         }
     }
