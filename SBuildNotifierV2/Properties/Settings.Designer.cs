@@ -47,5 +47,17 @@ namespace SBuildNotifierV2.Properties {
                 this["branchNames"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool runStartup {
+            get {
+                return ((bool)(this["runStartup"]));
+            }
+            set {
+                this["runStartup"] = value;
+            }
+        }
     }
 }

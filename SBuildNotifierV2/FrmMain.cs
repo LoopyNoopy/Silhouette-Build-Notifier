@@ -12,6 +12,7 @@ using System.Resources;
 using System.Globalization;
 using System.IO;
 using System.Configuration;
+using Microsoft.Win32;
 
 namespace SBuildNotifierV2
 {
@@ -24,7 +25,7 @@ namespace SBuildNotifierV2
 
         private void updateBranchList()
         {
-            //This updated the branchNames setting when the directory has been changed
+            //Checks if the directory exists, if it does add the names to the checklistbox
             if(Directory.Exists(@Properties.Settings.Default.serverPath + "\\" + DateTime.Now.Year.ToString() + "\\" + DateTime.Now.ToString("MMMM")))
             {
                 string[] dirs = Directory.GetDirectories(@Properties.Settings.Default.serverPath + "\\" + DateTime.Now.Year.ToString() + "\\" + DateTime.Now.ToString("MMMM"), "b*", SearchOption.TopDirectoryOnly);
@@ -42,7 +43,7 @@ namespace SBuildNotifierV2
                 lblSeverPath.Text = ("Server not found");
                 chkLBoxBranches.Hide();
             }
-            //This grabs the branch names from the settings and sets them as the check box names
+            //Checks all the names in the check box against the settings file to see which have already been checked
             BindingList<string> boundBranches = new BindingList<string>(Properties.Settings.Default.branchNames.Cast<string>().ToArray());
             int i = 0;
             foreach (string branch in boundBranches)
@@ -61,13 +62,18 @@ namespace SBuildNotifierV2
             chkLBoxBranches.Height = chkLBoxBranches.Items.Count * (chkLBoxBranches.ItemHeight + 2);
         }
 
+        //Sets checkboxes / buttons to correct state on load
         private void FrmMain_Load(object sender, EventArgs e)
         {
+            nIcoBNotifier.Visible = true;
             //Settings text to what they should be
             lblTitle.Text = Properties.Resources.ResourceManager.GetString("frmTitle");
+            lblTitle.Left = (lblTitle.Parent.Width - lblTitle.Width) / 2;
             lblSeverPath.Text = Properties.Settings.Default.serverPath;
             lblDate.Text = DateTime.Now.ToString("MMMM") + " - " + DateTime.Now.Year.ToString();
+            lblDate.Left = (lblDate.Parent.Width - lblDate.Width) / 2;
             updateBranchList();
+            btnStatus();
         }
 
         //Changes the directory location of the server
@@ -89,6 +95,55 @@ namespace SBuildNotifierV2
             foreach (object itemCheck in chkLBoxBranches.Items)
             {
                 Properties.Settings.Default.branchNames.Add(itemCheck.ToString() + "," + chkLBoxBranches.GetItemCheckState(chkLBoxBranches.Items.IndexOf(itemCheck)).ToString());
+                //Add / remove watcher
+            }
+            Properties.Settings.Default.Save();
+        }
+
+        //Functions which minimises to the systemtray icon
+        private void FrmMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = true;
+            Hide();
+            nIcoBNotifier.Visible = true;
+        }
+
+        //Function to show the UI when double clicking the systray
+        private void nIcoBNotifier_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            Show();
+            WindowState = FormWindowState.Normal;
+            nIcoBNotifier.Visible = false;
+        }
+
+        //Updates the startup setting when clicked
+        private void btnStartup_Click(object sender, EventArgs e)
+        {
+            btnStatus();
+        }
+
+        //When toggled, adds / deletes registry key in startup reg
+        private void btnStatus()
+        {
+            if (Properties.Settings.Default.runStartup == true)
+            {
+                Properties.Settings.Default.runStartup = false;
+                using (RegistryKey key = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true))
+                {
+                    key.DeleteValue("Silhouette Build Notifier", false);
+                }
+                btnStartup.Text = ("Not on login");
+                btnStartup.BackColor = Color.FromArgb(255, 208, 106, 78);
+            }
+            else
+            {
+                Properties.Settings.Default.runStartup = true;
+                using (RegistryKey key = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true))
+                {
+                    key.SetValue("Silhouette Build Notifier", "\"" + Application.ExecutablePath + "\"");
+                }
+                btnStartup.Text = ("On login");
+                btnStartup.BackColor = Color.FromArgb(255, 79, 178, 206);
             }
             Properties.Settings.Default.Save();
         }
