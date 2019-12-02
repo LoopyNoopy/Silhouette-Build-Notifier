@@ -32,7 +32,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.lblTitle = new System.Windows.Forms.Label();
             this.lblSeverPath = new System.Windows.Forms.Label();
-            this.fileDialogServerPath = new System.Windows.Forms.OpenFileDialog();
             this.folderDialogServerPath = new System.Windows.Forms.FolderBrowserDialog();
             this.btnServerLocation = new System.Windows.Forms.Button();
             this.lblDate = new System.Windows.Forms.Label();
@@ -63,11 +62,6 @@
             this.lblSeverPath.Size = new System.Drawing.Size(121, 21);
             this.lblSeverPath.TabIndex = 1;
             this.lblSeverPath.Text = "Sever path label";
-            // 
-            // fileDialogServerPath
-            // 
-            this.fileDialogServerPath.InitialDirectory = "This PC";
-            this.fileDialogServerPath.Title = "Select Build Folder";
             // 
             // folderDialogServerPath
             // 
@@ -129,6 +123,8 @@
             // 
             // btnStartup
             // 
+            this.btnStartup.AutoSize = true;
+            this.btnStartup.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnStartup.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(178)))), ((int)(((byte)(206)))));
             this.btnStartup.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnStartup.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(128)))), ((int)(((byte)(152)))));
@@ -138,7 +134,7 @@
             this.btnStartup.ForeColor = System.Drawing.Color.White;
             this.btnStartup.Location = new System.Drawing.Point(194, 93);
             this.btnStartup.Name = "btnStartup";
-            this.btnStartup.Size = new System.Drawing.Size(105, 30);
+            this.btnStartup.Size = new System.Drawing.Size(102, 29);
             this.btnStartup.TabIndex = 6;
             this.btnStartup.Text = "Run at startup";
             this.btnStartup.UseVisualStyleBackColor = false;
@@ -174,7 +170,6 @@
 
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.Label lblSeverPath;
-        private System.Windows.Forms.OpenFileDialog fileDialogServerPath;
         private System.Windows.Forms.FolderBrowserDialog folderDialogServerPath;
         private System.Windows.Forms.Button btnServerLocation;
         private System.Windows.Forms.Label lblDate;

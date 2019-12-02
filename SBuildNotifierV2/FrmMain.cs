@@ -29,35 +29,62 @@ namespace SBuildNotifierV2
             if(Directory.Exists(@Properties.Settings.Default.serverPath + "\\" + DateTime.Now.Year.ToString() + "\\" + DateTime.Now.ToString("MMMM")))
             {
                 string[] dirs = Directory.GetDirectories(@Properties.Settings.Default.serverPath + "\\" + DateTime.Now.Year.ToString() + "\\" + DateTime.Now.ToString("MMMM"), "b*", SearchOption.TopDirectoryOnly);
-                var branchNamesList = new List<string>();
-                foreach (string branch in dirs)
+                if(!(dirs == null))
                 {
-                    branchNamesList.Add(branch.Substring(branch.LastIndexOf('\\') + 1));
+                    var branchNamesList = new List<string>();
+                    foreach (string branch in dirs)
+                    {
+                        branchNamesList.Add(branch.Substring(branch.LastIndexOf('\\') + 1));
+                    }
+                    chkLBoxBranches.Items.Clear();
+                    chkLBoxBranches.Items.AddRange(branchNamesList.ToArray());
+                    //Checks all the names in the check box against the settings file to see which have already been checked
+                    BindingList<string> boundBranches = new BindingList<string>(Properties.Settings.Default.branchNames.Cast<string>().ToArray());
+                    int i = 0;
+                    foreach (string branch in boundBranches)
+                    {
+                        if (branchNamesList.Contains(branch))
+                        {
+                            if (branch.Substring(branch.LastIndexOf(',') + 1) == "Checked")
+                            {
+                                chkLBoxBranches.SetItemChecked(i, true);
+                            }
+                            else
+                            {
+                                chkLBoxBranches.SetItemChecked(i, false);
+                            }
+                        }
+                        else
+                        {
+                            //chkLBoxBranches.SetItemCheckState(i, CheckState.Indeterminate);
+                        }
+                        i += 1;
+                    }
                 }
-                chkLBoxBranches.Items.Clear();
-                chkLBoxBranches.Items.AddRange(branchNamesList.ToArray());
+                else
+                {
+                    lblSeverPath.Text = ("No branches have been made yet");
+                }
+                
                 chkLBoxBranches.Show();
             }
             else
             {
-                lblSeverPath.Text = ("Server not found");
-                chkLBoxBranches.Hide();
-            }
-            //Checks all the names in the check box against the settings file to see which have already been checked
-            BindingList<string> boundBranches = new BindingList<string>(Properties.Settings.Default.branchNames.Cast<string>().ToArray());
-            int i = 0;
-            foreach (string branch in boundBranches)
-            {
-                if (branch.Substring(branch.LastIndexOf(',') + 1) == "Checked")
+                if(!(Directory.Exists(@Properties.Settings.Default.serverPath + "\\" + DateTime.Now.Year.ToString() + "\\" + DateTime.Now.ToString("MMMM"))))
                 {
-                    chkLBoxBranches.SetItemChecked(i, true);
+                    lblSeverPath.Text = ("Month not found");
+                }
+                else if((!(Directory.Exists(@Properties.Settings.Default.serverPath + "\\" + DateTime.Now.Year.ToString()))))
+                {
+                    lblSeverPath.Text = ("Year not found");
                 }
                 else
                 {
-                    chkLBoxBranches.SetItemChecked(i, false);
+                    lblSeverPath.Text = ("Server not found");
                 }
-                i += 1;
+                chkLBoxBranches.Hide();
             }
+
             Properties.Settings.Default.Save();
             chkLBoxBranches.Height = chkLBoxBranches.Items.Count * (chkLBoxBranches.ItemHeight + 2);
         }
@@ -132,7 +159,7 @@ namespace SBuildNotifierV2
                 {
                     key.DeleteValue("Silhouette Build Notifier", false);
                 }
-                btnStartup.Text = ("Not on login");
+                btnStartup.Text = ("Startup Disabled");
                 btnStartup.BackColor = Color.FromArgb(255, 208, 106, 78);
             }
             else
@@ -142,7 +169,7 @@ namespace SBuildNotifierV2
                 {
                     key.SetValue("Silhouette Build Notifier", "\"" + Application.ExecutablePath + "\"");
                 }
-                btnStartup.Text = ("On login");
+                btnStartup.Text = ("Startup Enabled");
                 btnStartup.BackColor = Color.FromArgb(255, 79, 178, 206);
             }
             Properties.Settings.Default.Save();
