@@ -23,13 +23,12 @@ namespace SBuildNotifierV2
             InitializeComponent();
         }
 
-        private void updateBranchList()
-        {
+        private void updateBranchList() {
             //Checks if the directory exists, if it does add the names to the checklistbox
-            if(Directory.Exists(@Properties.Settings.Default.serverPath + "\\" + DateTime.Now.Year.ToString() + "\\" + DateTime.Now.ToString("MMMM")))
+            if (Directory.Exists(@Properties.Settings.Default.serverPath + "\\" + DateTime.Now.Year.ToString() + "\\" + DateTime.Now.ToString("MMMM")))
             {
                 string[] dirs = Directory.GetDirectories(@Properties.Settings.Default.serverPath + "\\" + DateTime.Now.Year.ToString() + "\\" + DateTime.Now.ToString("MMMM"), "b*", SearchOption.TopDirectoryOnly);
-                if(!(dirs == null))
+                if (!(dirs == null))
                 {
                     var branchNamesList = new List<string>();
                     foreach (string branch in dirs)
@@ -65,16 +64,16 @@ namespace SBuildNotifierV2
                 {
                     lblSeverPath.Text = ("No branches have been made yet");
                 }
-                
+
                 chkLBoxBranches.Show();
             }
             else
             {
-                if(!(Directory.Exists(@Properties.Settings.Default.serverPath + "\\" + DateTime.Now.Year.ToString() + "\\" + DateTime.Now.ToString("MMMM"))))
+                if (!(Directory.Exists(@Properties.Settings.Default.serverPath + "\\" + DateTime.Now.Year.ToString() + "\\" + DateTime.Now.ToString("MMMM"))))
                 {
                     lblSeverPath.Text = ("Month not found");
                 }
-                else if((!(Directory.Exists(@Properties.Settings.Default.serverPath + "\\" + DateTime.Now.Year.ToString()))))
+                else if ((!(Directory.Exists(@Properties.Settings.Default.serverPath + "\\" + DateTime.Now.Year.ToString()))))
                 {
                     lblSeverPath.Text = ("Year not found");
                 }
@@ -89,6 +88,41 @@ namespace SBuildNotifierV2
             chkLBoxBranches.Height = chkLBoxBranches.Items.Count * (chkLBoxBranches.ItemHeight + 2);
         }
 
+        private void updateBranchListo()
+        {
+            //Clears the current check box
+            chkLBoxBranches.Items.Clear();
+            //If statement to see if it can see the branch folders
+            if (Directory.Exists(@Properties.Settings.Default.serverPath + "\\" + DateTime.Now.Year.ToString() + "\\" + DateTime.Now.ToString("MMMM")))
+            {
+                //Grabs the current live directory it can see
+                string[] liveDirectory = Directory.GetDirectories(@Properties.Settings.Default.serverPath + "\\" + DateTime.Now.Year.ToString() + "\\" + DateTime.Now.ToString("MMMM"), "b*", SearchOption.TopDirectoryOnly);
+                //Checks to see if there are any branch numbers
+                if (!(liveDirectory == null))
+                {
+                    //For each branch found, take the branch name and add them to an array
+                    var liveDirectoryNames = new List<string>();
+                    foreach (string branch in liveDirectory)
+                    {
+                        liveDirectoryNames.Add(branch.Substring(branch.LastIndexOf('\\') + 1));
+                    }
+                    //Populate the check box with those items
+                    chkLBoxBranches.Items.AddRange(liveDirectoryNames.ToArray());
+                    //Get the branches from the settings file and add them to a list
+                    var settingsBranchList = new List<string>(Properties.Settings.Default.branchNames.Cast<string>().ToArray());
+                    //For loop to check the settings file agaisnt the ones in the live directory, if they match check
+                    int i = 0;
+                    foreach(string branch in settingsBranchList)
+                    {
+                        if (liveDirectoryNames.Contains(branch))
+                        {
+
+                        }
+                    }
+                }
+            }
+        }
+
         //Sets checkboxes / buttons to correct state on load
         private void FrmMain_Load(object sender, EventArgs e)
         {
@@ -100,7 +134,7 @@ namespace SBuildNotifierV2
             lblDate.Text = DateTime.Now.ToString("MMMM") + " - " + DateTime.Now.Year.ToString();
             lblDate.Left = (lblDate.Parent.Width - lblDate.Width) / 2;
             updateBranchList();
-            btnStatus();
+            startUpCheck();
         }
 
         //Changes the directory location of the server
@@ -173,6 +207,21 @@ namespace SBuildNotifierV2
                 btnStartup.BackColor = Color.FromArgb(255, 79, 178, 206);
             }
             Properties.Settings.Default.Save();
+        }
+
+        private void startUpCheck()
+        {
+            if (Properties.Settings.Default.runStartup == true)
+            {
+                btnStartup.Text = ("Startup Enabled");
+                btnStartup.BackColor = Color.FromArgb(255, 79, 178, 206);
+                
+            }
+            else
+            {
+                btnStartup.Text = ("Startup Disabled");
+                btnStartup.BackColor = Color.FromArgb(255, 208, 106, 78);
+            }
         }
     }
 }
