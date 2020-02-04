@@ -13,128 +13,188 @@ using System.Globalization;
 using System.IO;
 using System.Configuration;
 using Microsoft.Win32;
+using Microsoft.Toolkit.Uwp.Notifications;
+using System.Windows.UI.Notifications;
 
 namespace SBuildNotifierV2
 {
     public partial class FrmMain : Form
     {
+        public List<FileSystemWatcher> buildWatchers = new List<FileSystemWatcher>();
+
         public FrmMain()
         {
             InitializeComponent();
         }
 
-        private void updateBranchList() {
-            //Checks if the directory exists, if it does add the names to the checklistbox
-            if (Directory.Exists(@Properties.Settings.Default.serverPath + "\\" + DateTime.Now.Year.ToString() + "\\" + DateTime.Now.ToString("MMMM")))
-            {
-                string[] dirs = Directory.GetDirectories(@Properties.Settings.Default.serverPath + "\\" + DateTime.Now.Year.ToString() + "\\" + DateTime.Now.ToString("MMMM"), "b*", SearchOption.TopDirectoryOnly);
-                if (!(dirs == null))
-                {
-                    var branchNamesList = new List<string>();
-                    foreach (string branch in dirs)
-                    {
-                        branchNamesList.Add(branch.Substring(branch.LastIndexOf('\\') + 1));
-                    }
-                    chkLBoxBranches.Items.Clear();
-                    chkLBoxBranches.Items.AddRange(branchNamesList.ToArray());
-                    //Checks all the names in the check box against the settings file to see which have already been checked
-                    BindingList<string> boundBranches = new BindingList<string>(Properties.Settings.Default.branchNames.Cast<string>().ToArray());
-                    int i = 0;
-                    foreach (string branch in boundBranches)
-                    {
-                        if (branchNamesList.Contains(branch))
-                        {
-                            if (branch.Substring(branch.LastIndexOf(',') + 1) == "Checked")
-                            {
-                                chkLBoxBranches.SetItemChecked(i, true);
-                            }
-                            else
-                            {
-                                chkLBoxBranches.SetItemChecked(i, false);
-                            }
-                        }
-                        else
-                        {
-                            //chkLBoxBranches.SetItemCheckState(i, CheckState.Indeterminate);
-                        }
-                        i += 1;
-                    }
-                }
-                else
-                {
-                    lblSeverPath.Text = ("No branches have been made yet");
-                }
 
-                chkLBoxBranches.Show();
+        public static void StartWatchers()
+        {
+            string[] ArrayPaths = new string[2];
+            List<FileSystemWatcher> watchers = new List<FileSystemWatcher>();
+            ArrayPaths[0] = @"C:\WatcherTest";
+            ArrayPaths[1] = @"C:\WatcherTest2"; 
+
+        int i = 0;
+            foreach (String String in ArrayPaths)
+            {
+                watchers.Add(MyWatcherFatory(ArrayPaths[i]));
+                i++;
+            }
+
+            foreach (FileSystemWatcher watcher in watchers)
+            {
+                watcher.EnableRaisingEvents = true; ;
+                Console.WriteLine("Watching this folder {0}", watcher.Path);
+                i++;
+            }
+
+        }
+        public static FileSystemWatcher MyWatcherFatory(string path)
+        {
+            FileSystemWatcher watcher = new FileSystemWatcher(path);
+            watcher.Changed += Watcher_Created;
+            watcher.Created += Watcher_Created;
+            watcher.Path = path;
+            watcher.Filter = "*.txt";
+            watcher.IncludeSubdirectories = true;
+            return watcher;
+        }
+
+        private static void Watcher_Created(object sender, FileSystemEventArgs e)
+        {
+            System.Threading.Thread.Sleep(1000);
+            _ = new FileInfo(e.FullPath);
+            //var notifications = Windows.UI.Notifications;
+            Console.WriteLine("File Created!! :: {0}", e.FullPath);
+        }
+
+        private void updateWatcher()
+        {
+            //FileSystemWatcher branch = new FileSystemWatcher();
+            foreach(var branch in chkLBoxBranches.Items)
+            {
+                if (chkLBoxBranches.GetItemCheckState(chkLBoxBranches.Items.IndexOf(branch)).ToString().Contains("Unchecked") != true)
+                {
+                    if(chkLBoxBranches.GetItemCheckState(chkLBoxBranches.Items.IndexOf(branch)).ToString().Contains("Indeterminate") != true)
+                    {
+                        //If the checkbox is checked - Create a watcher for it
+                        
+                        Console.WriteLine(branch + chkLBoxBranches.GetItemCheckState(chkLBoxBranches.Items.IndexOf(branch)).ToString());
+                    }
+                }
+            }
+        }
+
+
+        private void checkLiveBranch()
+        {
+            if (Directory.Exists(Properties.Settings.Default.serverPath + "\\" + DateTime.Now.Year.ToString() + "\\" + DateTime.Now.ToString("MMMM")))
+            {
+                string[] liveDirectory = Directory.GetDirectories(@Properties.Settings.Default.serverPath + "\\" + DateTime.Now.Year.ToString() + "\\" + DateTime.Now.ToString("MMMM"), "b*", SearchOption.TopDirectoryOnly);
+                if (!(liveDirectory == null))
+                {
+                    var liveBranchNames = new List<string>();
+                    foreach (string branch in liveDirectory)
+                    {
+                        liveBranchNames.Add(branch.Substring(branch.LastIndexOf('\\') + 1));
+                    }
+                    //If the saved branches is not empty - add those which are new
+                    if (!(Properties.Settings.Default.branchNames == null))
+                    {
+                        //Compare saved branches to live branches - add those it does not contain
+                        var savedDirectory = new List<string>(Properties.Settings.Default.branchNames.Cast<string>().ToArray());
+                        bool isThere = false;
+                        foreach (string savedBranch in savedDirectory)
+                        {
+                            isThere = false;
+                            foreach (string liveBranch in liveBranchNames)
+                            {
+                                if (savedBranch.Contains(liveBranch))
+                                {
+                                    isThere = true;
+                                }
+                            }
+                            //If the branch is already in the saved branches remove it from the live branch names
+                            if (isThere == true)
+                            {
+                                liveBranchNames.RemoveAll(b => b.Contains(savedBranch.Substring(0, savedBranch.IndexOf(","))));
+                            }
+                        }
+                        //savedDirectory.AddRange(liveBranchNames);
+                        liveBranchNames.Distinct().ToList();
+                        foreach (string item in liveBranchNames)
+                        {
+                            Properties.Settings.Default.branchNames.Add(item.ToString() + "," + "Unchecked");
+                        }
+                        Properties.Settings.Default.Save();
+                    }
+                    chkLBoxBranches.Show();
+                }
             }
             else
             {
-                if (!(Directory.Exists(@Properties.Settings.Default.serverPath + "\\" + DateTime.Now.Year.ToString() + "\\" + DateTime.Now.ToString("MMMM"))))
+                chkLBoxBranches.Hide();
+            }
+        }
+
+        private void setCheckState()
+        {
+            //Grab the names of the branches and populates them in the box
+            //To see if the directories still exist
+            string[] liveDirectory = Directory.GetDirectories(@Properties.Settings.Default.serverPath + "\\" + DateTime.Now.Year.ToString() + "\\" + DateTime.Now.ToString("MMMM"), "b*", SearchOption.TopDirectoryOnly);
+            var branches = new List<string>(Properties.Settings.Default.branchNames.Cast<string>().ToArray());
+            var branchNames = new List<string>();
+            foreach(string branch in branches)
+            {
+                branchNames.Add(branch.Substring(0, branch.IndexOf(",")));
+            }
+            chkLBoxBranches.Items.AddRange(branchNames.ToArray());
+            //Checks to see the checked state and updates the check box
+            int i = 0;
+            bool exist = false;
+            foreach (string branch in branches)
+            {
+                exist = false;
+                if (branch.Contains("Unchecked") == true)
                 {
-                    lblSeverPath.Text = ("Month not found");
-                }
-                else if ((!(Directory.Exists(@Properties.Settings.Default.serverPath + "\\" + DateTime.Now.Year.ToString()))))
-                {
-                    lblSeverPath.Text = ("Year not found");
+                    chkLBoxBranches.SetItemChecked(i, false);
                 }
                 else
                 {
-                    lblSeverPath.Text = ("Server not found");
+                    chkLBoxBranches.SetItemChecked(i, true);
                 }
-                chkLBoxBranches.Hide();
-            }
-
-            Properties.Settings.Default.Save();
-            chkLBoxBranches.Height = chkLBoxBranches.Items.Count * (chkLBoxBranches.ItemHeight + 2);
-        }
-
-        private void updateBranchListo()
-        {
-            //Clears the current check box
-            chkLBoxBranches.Items.Clear();
-            //If statement to see if it can see the branch folders
-            if (Directory.Exists(@Properties.Settings.Default.serverPath + "\\" + DateTime.Now.Year.ToString() + "\\" + DateTime.Now.ToString("MMMM")))
-            {
-                //Grabs the current live directory it can see
-                string[] liveDirectory = Directory.GetDirectories(@Properties.Settings.Default.serverPath + "\\" + DateTime.Now.Year.ToString() + "\\" + DateTime.Now.ToString("MMMM"), "b*", SearchOption.TopDirectoryOnly);
-                //Checks to see if there are any branch numbers
-                if (!(liveDirectory == null))
+                foreach(string liveBranch in liveDirectory)
                 {
-                    //For each branch found, take the branch name and add them to an array
-                    var liveDirectoryNames = new List<string>();
-                    foreach (string branch in liveDirectory)
+                    if (liveBranch.Contains(branch.Substring(0, branch.IndexOf(",")))==true)
                     {
-                        liveDirectoryNames.Add(branch.Substring(branch.LastIndexOf('\\') + 1));
-                    }
-                    //Populate the check box with those items
-                    chkLBoxBranches.Items.AddRange(liveDirectoryNames.ToArray());
-                    //Get the branches from the settings file and add them to a list
-                    var settingsBranchList = new List<string>(Properties.Settings.Default.branchNames.Cast<string>().ToArray());
-                    //For loop to check the settings file agaisnt the ones in the live directory, if they match check
-                    int i = 0;
-                    foreach(string branch in settingsBranchList)
-                    {
-                        if (liveDirectoryNames.Contains(branch))
-                        {
-
-                        }
+                        exist = true;
                     }
                 }
+                if(exist == false)
+                {
+                    chkLBoxBranches.SetItemCheckState(i, CheckState.Indeterminate);
+                }
+                i += 1;
             }
+            chkLBoxBranches.Show();
         }
 
         //Sets checkboxes / buttons to correct state on load
         private void FrmMain_Load(object sender, EventArgs e)
         {
             nIcoBNotifier.Visible = true;
+
             //Settings text to what they should be
             lblTitle.Text = Properties.Resources.ResourceManager.GetString("frmTitle");
             lblTitle.Left = (lblTitle.Parent.Width - lblTitle.Width) / 2;
             lblSeverPath.Text = Properties.Settings.Default.serverPath;
             lblDate.Text = DateTime.Now.ToString("MMMM") + " - " + DateTime.Now.Year.ToString();
             lblDate.Left = (lblDate.Parent.Width - lblDate.Width) / 2;
-            updateBranchList();
+            checkLiveBranch();
+            setCheckState();
             startUpCheck();
+            StartWatchers();
         }
 
         //Changes the directory location of the server
@@ -145,7 +205,7 @@ namespace SBuildNotifierV2
             {
                 Properties.Settings.Default.serverPath = folderDialogServerPath.SelectedPath;
                 lblSeverPath.Text = Properties.Settings.Default.serverPath;
-                updateBranchList();
+                checkLiveBranch();
             }
         }
 
@@ -156,11 +216,11 @@ namespace SBuildNotifierV2
             foreach (object itemCheck in chkLBoxBranches.Items)
             {
                 Properties.Settings.Default.branchNames.Add(itemCheck.ToString() + "," + chkLBoxBranches.GetItemCheckState(chkLBoxBranches.Items.IndexOf(itemCheck)).ToString());
-                //Add / remove watcher
+                updateWatcher();
             }
             Properties.Settings.Default.Save();
         }
-
+        
         //Functions which minimises to the systemtray icon
         private void FrmMain_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -222,6 +282,55 @@ namespace SBuildNotifierV2
                 btnStartup.Text = ("Startup Disabled");
                 btnStartup.BackColor = Color.FromArgb(255, 208, 106, 78);
             }
+        }
+
+        private void btnNotify_Click(object sender, EventArgs e)
+        {
+            var toastContent = new ToastContent()
+            {
+                Visual = new ToastVisual()
+                {
+                    BindingGeneric = new ToastBindingGeneric()
+                    {
+                        Children =
+            {
+                new AdaptiveText()
+                {
+                    Text = "New build of XXX is available"
+                },
+                new AdaptiveText()
+                {
+                    Text = "XXX has just been been created, would you like to open the build folder?"
+                }
+            },
+                        AppLogoOverride = new ToastGenericAppLogo()
+                        {
+                            Source = @"C:\Users\dburgess\Pictures\silhouetteLogo.png",
+                            HintCrop = ToastGenericAppLogoCrop.Circle
+                        }
+                    }
+                },
+                Actions = new ToastActionsCustom()
+                {
+                    Buttons =
+        {
+            new ToastButton("Yes", "action=acceptFriendRequest&userId=49183")
+            {
+                ActivationType = ToastActivationType.Background
+            },
+            new ToastButton("No", "action=declineFriendRequest&userId=49183")
+            {
+                ActivationType = ToastActivationType.Background
+            }
+        }
+                }
+            };
+
+            // Create the toast notification
+            var toastNotif = new ToastNotification(toastContent.GetContent());
+
+            // And send the notification
+            ToastNotificationManager.CreateToastNotifier().Show(toastNotif);
         }
     }
 }

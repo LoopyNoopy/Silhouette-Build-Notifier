@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="serverPath" Type="System.String" Scope="User">
-      <Value Profile="(Default)">\\srtserver-01\build_folder</Value>
+      <Value Profile="(Default)">Please select folder</Value>
     </Setting>
     <Setting Name="branchNames" Type="System.Collections.Specialized.StringCollection" Scope="User">
       <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;

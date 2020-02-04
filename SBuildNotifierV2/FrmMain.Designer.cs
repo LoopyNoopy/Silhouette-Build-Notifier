@@ -38,6 +38,7 @@
             this.chkLBoxBranches = new System.Windows.Forms.CheckedListBox();
             this.nIcoBNotifier = new System.Windows.Forms.NotifyIcon(this.components);
             this.btnStartup = new System.Windows.Forms.Button();
+            this.btnNotify = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblTitle
@@ -140,6 +141,16 @@
             this.btnStartup.UseVisualStyleBackColor = false;
             this.btnStartup.Click += new System.EventHandler(this.btnStartup_Click);
             // 
+            // btnNotify
+            // 
+            this.btnNotify.Location = new System.Drawing.Point(195, 129);
+            this.btnNotify.Name = "btnNotify";
+            this.btnNotify.Size = new System.Drawing.Size(75, 23);
+            this.btnNotify.TabIndex = 7;
+            this.btnNotify.Text = "Notify";
+            this.btnNotify.UseVisualStyleBackColor = true;
+            this.btnNotify.Click += new System.EventHandler(this.btnNotify_Click);
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -148,6 +159,7 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(357, 450);
+            this.Controls.Add(this.btnNotify);
             this.Controls.Add(this.btnStartup);
             this.Controls.Add(this.chkLBoxBranches);
             this.Controls.Add(this.lblDate);
@@ -176,6 +188,7 @@
         private System.Windows.Forms.CheckedListBox chkLBoxBranches;
         private System.Windows.Forms.NotifyIcon nIcoBNotifier;
         private System.Windows.Forms.Button btnStartup;
+        private System.Windows.Forms.Button btnNotify;
     }
 }
 
