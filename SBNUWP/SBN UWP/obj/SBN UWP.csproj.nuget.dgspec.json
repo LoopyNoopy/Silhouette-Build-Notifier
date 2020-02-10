@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\dburgess\\source\\repos\\LoopyNoopy\\Silhouette-Build-Notifier\\SBNUWP\\SBN UWP\\SBN UWP.csproj": {}
+    "C:\\Users\\dburgess\\Source\\Repos\\LoopyNoopy\\Silhouette-Build-Notifier\\SBNUWP\\SBN UWP\\SBN UWP.csproj": {}
   },
   "projects": {
-    "C:\\Users\\dburgess\\source\\repos\\LoopyNoopy\\Silhouette-Build-Notifier\\SBNUWP\\SBN UWP\\SBN UWP.csproj": {
+    "C:\\Users\\dburgess\\Source\\Repos\\LoopyNoopy\\Silhouette-Build-Notifier\\SBNUWP\\SBN UWP\\SBN UWP.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\dburgess\\source\\repos\\LoopyNoopy\\Silhouette-Build-Notifier\\SBNUWP\\SBN UWP\\SBN UWP.csproj",
+        "projectUniqueName": "C:\\Users\\dburgess\\Source\\Repos\\LoopyNoopy\\Silhouette-Build-Notifier\\SBNUWP\\SBN UWP\\SBN UWP.csproj",
         "projectName": "SBN UWP",
-        "projectPath": "C:\\Users\\dburgess\\source\\repos\\LoopyNoopy\\Silhouette-Build-Notifier\\SBNUWP\\SBN UWP\\SBN UWP.csproj",
+        "projectPath": "C:\\Users\\dburgess\\Source\\Repos\\LoopyNoopy\\Silhouette-Build-Notifier\\SBNUWP\\SBN UWP\\SBN UWP.csproj",
         "packagesPath": "C:\\Users\\dburgess\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\dburgess\\source\\repos\\LoopyNoopy\\Silhouette-Build-Notifier\\SBNUWP\\SBN UWP\\obj\\",
+        "outputPath": "C:\\Users\\dburgess\\Source\\Repos\\LoopyNoopy\\Silhouette-Build-Notifier\\SBNUWP\\SBN UWP\\obj\\",
         "projectStyle": "PackageReference",
         "skipContentFileWrite": true,
         "fallbackFolders": [
@@ -40,6 +40,14 @@
             "Microsoft.NETCore.UniversalWindowsPlatform": {
               "target": "Package",
               "version": "[6.2.9, )"
+            },
+            "Microsoft.Toolkit.Uwp.Notifications": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
+            "QueryString.NET": {
+              "target": "Package",
+              "version": "[1.0.0, )"
             }
           },
           "imports": [
