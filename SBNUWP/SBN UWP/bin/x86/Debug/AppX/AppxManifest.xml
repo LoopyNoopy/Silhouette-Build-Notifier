@@ -24,10 +24,13 @@
     <Resource Language="EN-US" />
   </Resources>
   <Applications>
-    <Application Id="App" Executable="SBN UWP.exe" EntryPoint="SBN_UWP.App">
-      <uap:VisualElements DisplayName="SBN UWP" Square150x150Logo="Assets\Square150x150Logo.png" Square44x44Logo="Assets\Square44x44Logo.png" Description="SBN UWP" BackgroundColor="transparent">
+    <Application Id="App" Executable="SBN UWP.exe" EntryPoint="Build_Notifier.App">
+      <uap:VisualElements DisplayName="Silhouette Build Notifier" Square150x150Logo="Assets\Square150x150Logo.png" Square44x44Logo="Assets\Square44x44Logo.png" Description="App to detect builds being made from the buil Automation" BackgroundColor="transparent">
         <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png" />
         <uap:SplashScreen Image="Assets\SplashScreen.png" />
+        <uap:InitialRotationPreference>
+          <uap:Rotation Preference="landscape" />
+        </uap:InitialRotationPreference>
       </uap:VisualElements>
     </Application>
   </Applications>
