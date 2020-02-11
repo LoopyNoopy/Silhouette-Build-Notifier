@@ -30,13 +30,13 @@
     <AppXManifest Include="C:\Users\dburgess\Source\Repos\LoopyNoopy\Silhouette-Build-Notifier\SBNUWP\SBN UWP\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-02-11T12:03:14.970</Modified>
+      <Modified>2020-02-11T15:42:18.490</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\dburgess\Source\Repos\LoopyNoopy\Silhouette-Build-Notifier\SBNUWP\SBN UWP\bin\x86\Debug\SBN UWP.exe">
       <PackagePath>entrypoint\SBN UWP.exe</PackagePath>
-      <Modified>2020-02-11T09:12:05.841</Modified>
+      <Modified>2020-02-11T15:42:18.154</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\dburgess\.nuget\packages\microsoft.toolkit.uwp.notifications\6.0.0\lib\uap10.0\Microsoft.Toolkit.Uwp.Notifications.dll">
       <PackagePath>Microsoft.Toolkit.Uwp.Notifications.dll</PackagePath>
@@ -54,9 +54,9 @@
       <PackagePath>Microsoft.UI.Xaml.Markup.winmd</PackagePath>
       <Modified>2019-03-18T17:36:56.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\dburgess\Source\Repos\LoopyNoopy\Silhouette-Build-Notifier\SBNUWP\SBN UWP\Assets\Silhouette Logo.png">
-      <PackagePath>Assets\Silhouette Logo.png</PackagePath>
-      <Modified>2020-02-11T11:55:56.946</Modified>
+    <AppxPackagedFile Include="C:\Users\dburgess\Source\Repos\LoopyNoopy\Silhouette-Build-Notifier\SBNUWP\SBN UWP\Properties\Default.rd.xml">
+      <PackagePath>Properties\Default.rd.xml</PackagePath>
+      <Modified>2020-02-04T21:42:33.403</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\dburgess\Source\Repos\LoopyNoopy\Silhouette-Build-Notifier\SBNUWP\SBN UWP\Assets\LockScreenLogo.scale-200.png">
       <PackagePath>Assets\LockScreenLogo.scale-200.png</PackagePath>
@@ -92,21 +92,17 @@
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
       <Modified>2020-02-03T14:09:38.618</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\dburgess\Source\Repos\LoopyNoopy\Silhouette-Build-Notifier\SBNUWP\SBN UWP\Properties\Default.rd.xml">
-      <PackagePath>Properties\Default.rd.xml</PackagePath>
-      <Modified>2020-02-04T21:42:33.403</Modified>
-    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\dburgess\Source\Repos\LoopyNoopy\Silhouette-Build-Notifier\SBNUWP\SBN UWP\bin\x86\Debug\SBN UWP.xr.xml">
       <PackagePath>SBN UWP.xr.xml</PackagePath>
-      <Modified>2020-02-11T08:53:37.710</Modified>
+      <Modified>2020-02-11T13:30:20.294</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\dburgess\Source\Repos\LoopyNoopy\Silhouette-Build-Notifier\SBNUWP\SBN UWP\bin\x86\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
-      <Modified>2020-02-11T09:12:05.726</Modified>
+      <Modified>2020-02-11T15:42:18.051</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\dburgess\Source\Repos\LoopyNoopy\Silhouette-Build-Notifier\SBNUWP\SBN UWP\bin\x86\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
-      <Modified>2020-02-11T12:03:14.379</Modified>
+      <Modified>2020-02-11T15:42:18.051</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\10.0.18362.0\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
@@ -114,11 +110,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\dburgess\Source\Repos\LoopyNoopy\Silhouette-Build-Notifier\SBNUWP\SBN UWP\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2020-02-11T12:03:14.613</Modified>
+      <Modified>2020-02-11T12:40:23.721</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\dburgess\Source\Repos\LoopyNoopy\Silhouette-Build-Notifier\SBNUWP\SBN UWP\bin\x86\Debug\Core\SBN UWP.exe">
       <PackagePath>SBN UWP.exe</PackagePath>
-      <Modified>2020-02-11T12:03:14.954</Modified>
+      <Modified>2020-02-11T15:42:18.487</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

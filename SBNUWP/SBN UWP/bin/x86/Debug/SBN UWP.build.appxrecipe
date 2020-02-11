@@ -40,8 +40,8 @@
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\bin\10.0.18362.0\XamlCompiler\Microsoft.UI.Xaml.Markup.winmd">
       <PackagePath>Microsoft.UI.Xaml.Markup.winmd</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\dburgess\Source\Repos\LoopyNoopy\Silhouette-Build-Notifier\SBNUWP\SBN UWP\Assets\Silhouette Logo.png">
-      <PackagePath>Assets\Silhouette Logo.png</PackagePath>
+    <AppxPackagedFile Include="C:\Users\dburgess\Source\Repos\LoopyNoopy\Silhouette-Build-Notifier\SBNUWP\SBN UWP\Properties\Default.rd.xml">
+      <PackagePath>Properties\Default.rd.xml</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\dburgess\Source\Repos\LoopyNoopy\Silhouette-Build-Notifier\SBNUWP\SBN UWP\Assets\LockScreenLogo.scale-200.png">
       <PackagePath>Assets\LockScreenLogo.scale-200.png</PackagePath>
@@ -69,9 +69,6 @@
     <AppxPackagedFile Include="C:\Users\dburgess\Source\Repos\LoopyNoopy\Silhouette-Build-Notifier\SBNUWP\SBN UWP\Assets\Wide310x150Logo.scale-200.png">
       <PackagePath>Assets\Wide310x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\dburgess\Source\Repos\LoopyNoopy\Silhouette-Build-Notifier\SBNUWP\SBN UWP\Properties\Default.rd.xml">
-      <PackagePath>Properties\Default.rd.xml</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\dburgess\Source\Repos\LoopyNoopy\Silhouette-Build-Notifier\SBNUWP\SBN UWP\bin\x86\Debug\SBN UWP.xr.xml">
       <PackagePath>SBN UWP.xr.xml</PackagePath>

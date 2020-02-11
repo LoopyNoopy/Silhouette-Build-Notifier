@@ -9,7 +9,8 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <Button x:Name="btnToastTest" Content="Test Toast" Margin="101,174,0,0" VerticalAlignment="Top" Click="Button_Click"/>
-        <TextBox x:Name="txtBxServerLocation" HorizontalAlignment="Left" Margin="107,137,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <Button x:ConnectionId='2' x:Name="btnToastTest" Content="Test Toast" Margin="101,174,0,0" VerticalAlignment="Top"                     />
+        <TextBox x:ConnectionId='3' x:Name="txtBxServerLocation" HorizontalAlignment="Left" Margin="107,137,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top"/>
     </Grid>
 </Page>
+

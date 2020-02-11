@@ -14,6 +14,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Microsoft.Toolkit.Uwp.Notifications;
+using Windows.Storage;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -24,12 +25,13 @@ namespace SBN_UWP
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        ApplicationDataContainer localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
         public MainPage()
         {
             this.InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void toastNotification(string testSetting)
         {
             var toastContent = new ToastContent()
             {
@@ -41,7 +43,7 @@ namespace SBN_UWP
             {
                 new AdaptiveText()
                 {
-                    Text = "New Build alert"
+                    Text = testSetting
                 },
                 new AdaptiveText()
                 {
@@ -71,6 +73,13 @@ namespace SBN_UWP
 
             // And send the notification
             ToastNotificationManager.CreateToastNotifier().Show(toastNotif);
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            localSettings.Values["test setting"] = txtBxServerLocation.Text;
+            String localValue = localSettings.Values["test setting"] as string;
+            toastNotification(localValue);
         }
     }
 }
