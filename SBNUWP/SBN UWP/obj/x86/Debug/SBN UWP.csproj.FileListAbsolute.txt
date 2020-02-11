@@ -97,3 +97,4 @@ C:\Users\danie\source\repos\LoopyNoopy\Silhouette-Build-Notifier\SBNUWP\SBN UWP\
 C:\Users\danie\source\repos\LoopyNoopy\Silhouette-Build-Notifier\SBNUWP\SBN UWP\obj\x86\Debug\ProjectArchitectures.txt
 C:\Users\danie\source\repos\LoopyNoopy\Silhouette-Build-Notifier\SBNUWP\SBN UWP\obj\x86\Debug\.winmd_cache\$Microsoft.UI.Xaml.Markup.winmd_636885274160000000.json
 C:\Users\danie\source\repos\LoopyNoopy\Silhouette-Build-Notifier\SBNUWP\SBN UWP\obj\x86\Debug\.winmd_cache\$Microsoft.UI.Xaml.Markup.winmd_636885310160000000.json
+C:\Users\dburgess\Source\Repos\LoopyNoopy\Silhouette-Build-Notifier\SBNUWP\SBN UWP\obj\x86\Debug\.winmd_cache\$Microsoft.UI.Xaml.Markup.winmd_636885310160000000.json

@@ -8481,24 +8481,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\danie\\.nuget\\packages\\": {},
+    "C:\\Users\\dburgess\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft SDKs\\UWPNuGetPackages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\danie\\source\\repos\\LoopyNoopy\\Silhouette-Build-Notifier\\SBNUWP\\SBN UWP\\SBN UWP.csproj",
+      "projectUniqueName": "C:\\Users\\dburgess\\Source\\Repos\\LoopyNoopy\\Silhouette-Build-Notifier\\SBNUWP\\SBN UWP\\SBN UWP.csproj",
       "projectName": "SBN UWP",
-      "projectPath": "C:\\Users\\danie\\source\\repos\\LoopyNoopy\\Silhouette-Build-Notifier\\SBNUWP\\SBN UWP\\SBN UWP.csproj",
-      "packagesPath": "C:\\Users\\danie\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\danie\\source\\repos\\LoopyNoopy\\Silhouette-Build-Notifier\\SBNUWP\\SBN UWP\\obj\\",
+      "projectPath": "C:\\Users\\dburgess\\Source\\Repos\\LoopyNoopy\\Silhouette-Build-Notifier\\SBNUWP\\SBN UWP\\SBN UWP.csproj",
+      "packagesPath": "C:\\Users\\dburgess\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\dburgess\\Source\\Repos\\LoopyNoopy\\Silhouette-Build-Notifier\\SBNUWP\\SBN UWP\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft SDKs\\UWPNuGetPackages\\"
       ],
       "configFilePaths": [
-        "C:\\Users\\danie\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\dburgess\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

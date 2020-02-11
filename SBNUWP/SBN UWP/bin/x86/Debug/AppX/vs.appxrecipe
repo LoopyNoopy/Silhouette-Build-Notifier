@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <Machine>DESKTOP-I0DFS83</Machine>
-    <WindowsUser>danie</WindowsUser>
+    <Machine>SRTDESKTOP-SSKE</Machine>
+    <WindowsUser>dburgess</WindowsUser>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetOsVersion>10.0</TargetOsVersion>
     <TargetOsDescription>Windows 10.0</TargetOsDescription>
@@ -10,7 +10,7 @@
     <PackageArchitecture>x86</PackageArchitecture>
     <PackageIdentityName>ea544bf3-483b-4fd4-8381-4bd6e77cd2cb</PackageIdentityName>
     <PackageIdentityPublisher>CN=dburgess</PackageIdentityPublisher>
-    <IntermediateOutputPath>C:\Users\danie\source\repos\LoopyNoopy\Silhouette-Build-Notifier\SBNUWP\SBN UWP\obj\x86\Debug\</IntermediateOutputPath>
+    <IntermediateOutputPath>C:\Users\dburgess\Source\Repos\LoopyNoopy\Silhouette-Build-Notifier\SBNUWP\SBN UWP\obj\x86\Debug\</IntermediateOutputPath>
     <RemoteDeploymentType>
     </RemoteDeploymentType>
     <PackageRegistrationPath>
@@ -18,7 +18,7 @@
     <RemoveNonLayoutFiles>true</RemoveNonLayoutFiles>
     <DeployOptionalPackages>false</DeployOptionalPackages>
     <WindowsSdkPath>C:\Program Files %28x86%29\Windows Kits\10\</WindowsSdkPath>
-    <LayoutDir>C:\Users\danie\source\repos\LoopyNoopy\Silhouette-Build-Notifier\SBNUWP\SBN UWP\bin\x86\Debug\AppX</LayoutDir>
+    <LayoutDir>C:\Users\dburgess\Source\Repos\LoopyNoopy\Silhouette-Build-Notifier\SBNUWP\SBN UWP\bin\x86\Debug\AppX</LayoutDir>
     <RegisteredManifestChecksum>CBCC7F844BACDD63D99DC7FD8166E719030F4687DA48E70D81346DBA191C71B4</RegisteredManifestChecksum>
     <RegisteredPackageMoniker>ea544bf3-483b-4fd4-8381-4bd6e77cd2cb_1.0.0.0_x86__xnx8stxgxeb8w</RegisteredPackageMoniker>
     <RegisteredUserModeAppID>ea544bf3-483b-4fd4-8381-4bd6e77cd2cb_xnx8stxgxeb8w!App</RegisteredUserModeAppID>
@@ -27,22 +27,22 @@
     <RegisteredVersion>1.0.0.0</RegisteredVersion>
   </PropertyGroup>
   <ItemGroup>
-    <AppXManifest Include="C:\Users\danie\source\repos\LoopyNoopy\Silhouette-Build-Notifier\SBNUWP\SBN UWP\bin\x86\Debug\Core\AppxManifest.xml">
+    <AppXManifest Include="C:\Users\dburgess\Source\Repos\LoopyNoopy\Silhouette-Build-Notifier\SBNUWP\SBN UWP\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-02-10T23:16:14.793</Modified>
+      <Modified>2020-02-11T12:03:14.970</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
-    <AppxPackagedFile Include="C:\Users\danie\source\repos\LoopyNoopy\Silhouette-Build-Notifier\SBNUWP\SBN UWP\bin\x86\Debug\SBN UWP.exe">
+    <AppxPackagedFile Include="C:\Users\dburgess\Source\Repos\LoopyNoopy\Silhouette-Build-Notifier\SBNUWP\SBN UWP\bin\x86\Debug\SBN UWP.exe">
       <PackagePath>entrypoint\SBN UWP.exe</PackagePath>
-      <Modified>2020-02-10T23:16:14.280</Modified>
+      <Modified>2020-02-11T09:12:05.841</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\danie\.nuget\packages\microsoft.toolkit.uwp.notifications\6.0.0\lib\uap10.0\Microsoft.Toolkit.Uwp.Notifications.dll">
+    <AppxPackagedFile Include="C:\Users\dburgess\.nuget\packages\microsoft.toolkit.uwp.notifications\6.0.0\lib\uap10.0\Microsoft.Toolkit.Uwp.Notifications.dll">
       <PackagePath>Microsoft.Toolkit.Uwp.Notifications.dll</PackagePath>
       <Modified>2019-11-13T02:36:20.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\danie\.nuget\packages\querystring.net\1.0.0\lib\dotnet\QueryString.NETCore.dll">
+    <AppxPackagedFile Include="C:\Users\dburgess\.nuget\packages\querystring.net\1.0.0\lib\dotnet\QueryString.NETCore.dll">
       <PackagePath>QueryString.NETCore.dll</PackagePath>
       <Modified>2015-09-11T12:10:08.000</Modified>
     </AppxPackagedFile>
@@ -52,69 +52,73 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\bin\10.0.18362.0\XamlCompiler\Microsoft.UI.Xaml.Markup.winmd">
       <PackagePath>Microsoft.UI.Xaml.Markup.winmd</PackagePath>
-      <Modified>2019-03-18T18:36:56.000</Modified>
+      <Modified>2019-03-18T17:36:56.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\danie\source\repos\LoopyNoopy\Silhouette-Build-Notifier\SBNUWP\SBN UWP\Properties\Default.rd.xml">
-      <PackagePath>Properties\Default.rd.xml</PackagePath>
-      <Modified>2020-02-10T22:35:43.761</Modified>
+    <AppxPackagedFile Include="C:\Users\dburgess\Source\Repos\LoopyNoopy\Silhouette-Build-Notifier\SBNUWP\SBN UWP\Assets\Silhouette Logo.png">
+      <PackagePath>Assets\Silhouette Logo.png</PackagePath>
+      <Modified>2020-02-11T11:55:56.946</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\danie\source\repos\LoopyNoopy\Silhouette-Build-Notifier\SBNUWP\SBN UWP\Assets\LockScreenLogo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\dburgess\Source\Repos\LoopyNoopy\Silhouette-Build-Notifier\SBNUWP\SBN UWP\Assets\LockScreenLogo.scale-200.png">
       <PackagePath>Assets\LockScreenLogo.scale-200.png</PackagePath>
-      <Modified>2020-02-10T22:35:43.753</Modified>
+      <Modified>2020-02-11T12:00:46.753</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\danie\source\repos\LoopyNoopy\Silhouette-Build-Notifier\SBNUWP\SBN UWP\Assets\SplashScreen.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\dburgess\Source\Repos\LoopyNoopy\Silhouette-Build-Notifier\SBNUWP\SBN UWP\Assets\SplashScreen.scale-200.png">
       <PackagePath>Assets\SplashScreen.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-02-10T22:35:43.754</Modified>
+      <Modified>2020-02-03T14:09:38.618</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\danie\source\repos\LoopyNoopy\Silhouette-Build-Notifier\SBNUWP\SBN UWP\Assets\Square150x150Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\dburgess\Source\Repos\LoopyNoopy\Silhouette-Build-Notifier\SBNUWP\SBN UWP\Assets\Square150x150Logo.scale-200.png">
       <PackagePath>Assets\Square150x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-02-10T22:35:43.755</Modified>
+      <Modified>2020-02-11T12:02:13.300</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\danie\source\repos\LoopyNoopy\Silhouette-Build-Notifier\SBNUWP\SBN UWP\Assets\Square44x44Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\dburgess\Source\Repos\LoopyNoopy\Silhouette-Build-Notifier\SBNUWP\SBN UWP\Assets\Square44x44Logo.scale-200.png">
       <PackagePath>Assets\Square44x44Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-02-10T22:35:43.755</Modified>
+      <Modified>2020-02-11T12:01:16.687</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\danie\source\repos\LoopyNoopy\Silhouette-Build-Notifier\SBNUWP\SBN UWP\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
+    <AppxPackagedFile Include="C:\Users\dburgess\Source\Repos\LoopyNoopy\Silhouette-Build-Notifier\SBNUWP\SBN UWP\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
       <PackagePath>Assets\Square44x44Logo.targetsize-24_altform-unplated.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-02-10T22:35:43.756</Modified>
+      <Modified>2020-02-11T12:01:50.056</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\danie\source\repos\LoopyNoopy\Silhouette-Build-Notifier\SBNUWP\SBN UWP\Assets\StoreLogo.png">
+    <AppxPackagedFile Include="C:\Users\dburgess\Source\Repos\LoopyNoopy\Silhouette-Build-Notifier\SBNUWP\SBN UWP\Assets\StoreLogo.png">
       <PackagePath>Assets\StoreLogo.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-02-10T22:35:43.756</Modified>
+      <Modified>2020-02-11T12:02:46.923</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\danie\source\repos\LoopyNoopy\Silhouette-Build-Notifier\SBNUWP\SBN UWP\Assets\Wide310x150Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\dburgess\Source\Repos\LoopyNoopy\Silhouette-Build-Notifier\SBNUWP\SBN UWP\Assets\Wide310x150Logo.scale-200.png">
       <PackagePath>Assets\Wide310x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-02-10T22:35:43.757</Modified>
+      <Modified>2020-02-03T14:09:38.618</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\danie\source\repos\LoopyNoopy\Silhouette-Build-Notifier\SBNUWP\SBN UWP\bin\x86\Debug\SBN UWP.xr.xml">
+    <AppxPackagedFile Include="C:\Users\dburgess\Source\Repos\LoopyNoopy\Silhouette-Build-Notifier\SBNUWP\SBN UWP\Properties\Default.rd.xml">
+      <PackagePath>Properties\Default.rd.xml</PackagePath>
+      <Modified>2020-02-04T21:42:33.403</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\dburgess\Source\Repos\LoopyNoopy\Silhouette-Build-Notifier\SBNUWP\SBN UWP\bin\x86\Debug\SBN UWP.xr.xml">
       <PackagePath>SBN UWP.xr.xml</PackagePath>
-      <Modified>2020-02-10T23:06:26.503</Modified>
+      <Modified>2020-02-11T08:53:37.710</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\danie\source\repos\LoopyNoopy\Silhouette-Build-Notifier\SBNUWP\SBN UWP\bin\x86\Debug\App.xbf">
+    <AppxPackagedFile Include="C:\Users\dburgess\Source\Repos\LoopyNoopy\Silhouette-Build-Notifier\SBNUWP\SBN UWP\bin\x86\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
-      <Modified>2020-02-10T23:16:14.103</Modified>
+      <Modified>2020-02-11T09:12:05.726</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\danie\source\repos\LoopyNoopy\Silhouette-Build-Notifier\SBNUWP\SBN UWP\bin\x86\Debug\MainPage.xbf">
+    <AppxPackagedFile Include="C:\Users\dburgess\Source\Repos\LoopyNoopy\Silhouette-Build-Notifier\SBNUWP\SBN UWP\bin\x86\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
-      <Modified>2020-02-10T23:16:14.103</Modified>
+      <Modified>2020-02-11T12:03:14.379</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\10.0.18362.0\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
-      <Modified>2019-03-18T17:33:42.000</Modified>
+      <Modified>2019-03-18T16:33:42.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\danie\source\repos\LoopyNoopy\Silhouette-Build-Notifier\SBNUWP\SBN UWP\bin\x86\Debug\resources.pri">
+    <AppxPackagedFile Include="C:\Users\dburgess\Source\Repos\LoopyNoopy\Silhouette-Build-Notifier\SBNUWP\SBN UWP\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2020-02-10T23:06:27.316</Modified>
+      <Modified>2020-02-11T12:03:14.613</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\danie\source\repos\LoopyNoopy\Silhouette-Build-Notifier\SBNUWP\SBN UWP\bin\x86\Debug\Core\SBN UWP.exe">
+    <AppxPackagedFile Include="C:\Users\dburgess\Source\Repos\LoopyNoopy\Silhouette-Build-Notifier\SBNUWP\SBN UWP\bin\x86\Debug\Core\SBN UWP.exe">
       <PackagePath>SBN UWP.exe</PackagePath>
-      <Modified>2020-02-10T23:16:14.787</Modified>
+      <Modified>2020-02-11T12:03:14.954</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>
